@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>⚡Emmyways</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="nav-container">
+        <a href="#home" class="nav-logo" id="logo-link">
+          <span class="logo-accent">Swift</span>Track
+        </a>
+        <nav class="nav-links">
+          <button class="nav-tab active" data-target="home-section">
+            Home
+          </button>
+          <button class="nav-tab" data-target="create-section">
+            Create Waybill
+          </button>
+          <button class="nav-tab" data-target="track-section">
+            Track Waybill
+          </button>
+          <button
+            class="nav-tab"
+            data-target="admin-auth-section"
+            id="admin-nav-btn">
+            Admin
+          </button>
+        </nav>
+      </div>
+    </header>
+
+    <div id="toast-box" class="toast-box"></div>
+
+    <main class="app-viewport">
+      <section id="home-section" class="view-panel active">
+        <div class="hero-banner">
+          <h1>Next-Generation Freight & <br />Waybill Management Systems</h1>
+          <p>
+            Register, track, and audit shipments seamlessly across our logistics
+            pipeline with automated state updates.
+          </p>
+          <div class="hero-actions">
+            <button
+              class="btn btn-primary action-trigger"
+              data-target="create-section">
+              New Waybill
+            </button>
+            <button
+              class="btn btn-secondary action-trigger"
+              data-target="track-section">
+              Track Consignment
+            </button>
+          </div>
+        </div>
+
+        <div class="feature-grid">
+          <div class="feature-card">
+            <div class="card-icon">⚡</div>
+            <h3>Automated Manifesting</h3>
+            <p>
+              Instantly generate unique tracking tags stored directly inside
+              decentralized local engine profiles.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="card-icon">📍</div>
+            <h3>Timeline Diagnostics</h3>
+            <p>
+              Follow package flow trajectories dynamically from pickup points to
+              target delivery gates.
+            </p>
+          </div>
+          <div class="feature-card">
+            <div class="card-icon">🔒</div>
+            <h3>Enterprise Auditing</h3>
+            <p>
+              Administrative panels built exclusively to modify transit
+              conditions and track shipment histories.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="create-section" class="view-panel">
+        <div class="form-wrapper">
+          <div class="section-header">
+            <h2>Consignment Waybill Generator</h2>
+            <p>
+              Input necessary manifest specifications below to dynamically
+              register shipment vectors.
+            </p>
+          </div>
+          <form id="waybill-generation-form" class="logistics-form">
+            <div class="form-grid">
+              <div class="form-block">
+                <h3>1. Sender Parameters</h3>
+                <div class="input-group">
+                  <label for="sender-name">Sender Full Name *</label>
+                  <input
+                    type="text"
+                    id="sender-name"
+                    required
+                    autocomplete="off" />
+                </div>
+                <div class="input-group">
+                  <label for="sender-phone">Sender Phone Number *</label>
+                  <input
+                    type="tel"
+                    id="sender-phone"
+                    required
+                    autocomplete="off" />
+                </div>
+                <div class="input-group">
+                  <label for="sender-address">Pickup Full Address *</label>
+                  <input
+                    type="text"
+                    id="sender-address"
+                    required
+                    autocomplete="off" />
+                </div>
+              </div>
+
+              <div class="form-block">
+                <h3>2. Consignee Parameters</h3>
+                <div class="input-group">
+                  <label for="receiver-name">Receiver Full Name *</label>
+                  <input
+                    type="text"
+                    id="receiver-name"
+                    required
+                    autocomplete="off" />
+                </div>
+                <div class="input-group">
+                  <label for="receiver-phone">Receiver Phone Number *</label>
+                  <input
+                    type="tel"
+                    id="receiver-phone"
+                    required
+                    autocomplete="off" />
+                </div>
+                <div class="input-group">
+                  <label for="receiver-address">Delivery Full Address *</label>
+                  <input
+                    type="text"
+                    id="receiver-address"
+                    required
+                    autocomplete="off" />
+                </div>
+              </div>
+            </div>
+
+            <div class="form-block margin-top">
+              <h3>3. Asset Manifest Specs</h3>
+              <div class="form-grid">
+                <div class="input-group">
+                  <label for="item-desc">Item Description Matrix *</label>
+                  <input
+                    type="text"
+                    id="item-desc"
+                    placeholder="e.g. Corporate Papers, Electronics"
+                    required
+                    autocomplete="off" />
+                </div>
+                <div class="input-group">
+                  <label for="item-weight">Metric Weight (KG) *</label>
+                  <input
+                    type="number"
+                    id="item-weight"
+                    min="0.1"
+                    step="0.1"
+                    required
+                    autocomplete="off" />
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary full-width margin-top">
+              Register Consignment Waybill
+            </button>
+          </form>
+
+          <div id="creation-success-card" class="success-card hidden">
+            <div class="success-icon">✓</div>
+            <h3>Waybill Registered Successfully</h3>
+            <p>
+              The manifest ledger row has been added to local system memory.
+            </p>
+            <div class="tracking-output-token">
+              <span>Waybill Identifier Token:</span>
+              <h2 id="generated-wb-token">-</h2>
+            </div>
+            <button
+              class="btn btn-secondary action-trigger"
+              data-target="track-section">
+              Proceed to Track Sheet
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="track-section" class="view-panel">
+        <div class="tracking-search-wrapper">
+          <div class="section-header text-center">
+            <h2>Global Freight Audit Gateway</h2>
+            <p>
+              Enter your unique structural waybill code token to view physical
+              processing nodes.
+            </p>
+          </div>
+          <form id="tracking-search-form" class="search-form-row">
+            <input
+              type="text"
+              id="track-search-input"
+              placeholder="e.g. WB123456"
+              required
+              autocomplete="off" />
+            <button type="submit" class="btn btn-primary">Audit Package</button>
+          </form>
+        </div>
+
+        <div id="tracking-results-root" class="tracking-results-root hidden">
+          <div class="tracking-summary-grid">
+            <div class="summary-tile">
+              <h5>Identity Token</h5>
+              <p id="track-disp-wb">-</p>
+            </div>
+            <div class="summary-tile">
+              <h5>Current Status</h5>
+              <p id="track-disp-status" class="badge">-</p>
+            </div>
+            <div class="summary-tile">
+              <h5>Registered Date</h5>
+              <p id="track-disp-date">-</p>
+            </div>
+            <div class="summary-tile">
+              <h5>Metric Mass</h5>
+              <p id="track-disp-weight">-</p>
+            </div>
+          </div>
+
+          <div class="manifest-layout-split">
+            <div class="timeline-container">
+              <h3>Processing Node History</h3>
+              <div class="timeline-track" id="timeline-track-root"></div>
+            </div>
+
+            <div class="details-card-panel">
+              <h3>Waybill Manifest Blueprint</h3>
+              <div class="details-row">
+                <strong>Description:</strong>
+                <span id="track-disp-desc">-</span>
+              </div>
+              <hr />
+              <div class="details-row">
+                <strong>Shipper Name:</strong>
+                <span id="track-disp-sname">-</span>
+              </div>
+              <div class="details-row">
+                <strong>Shipper Phone:</strong>
+                <span id="track-disp-sphone">-</span>
+              </div>
+              <div class="details-row">
+                <strong>Origin Node:</strong>
+                <span id="track-disp-saddr">-</span>
+              </div>
+              <hr />
+              <div class="details-row">
+                <strong>Consignee Target:</strong>
+                <span id="track-disp-rname">-</span>
+              </div>
+              <div class="details-row">
+                <strong>Consignee Phone:</strong>
+                <span id="track-disp-rphone">-</span>
+              </div>
+              <div class="details-row">
+                <strong>Target Gateway:</strong>
+                <span id="track-disp-raddr">-</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="admin-auth-section" class="view-panel">
+        <div class="auth-card">
+          <div class="section-header text-center">
+            <h2>Terminal Clearance</h2>
+            <p>
+              Provide secure verification passwords to operate logistical
+              ledgers.
+            </p>
+          </div>
+          <form id="admin-login-form" class="logistics-form">
+            <div class="input-group">
+              <label for="admin-password">System Security Passcode</label>
+              <input
+                type="text"
+                id="admin-username"
+                placeholder="admin username" />
+              <input
+                type="password"
+                id="admin-password"
+                placeholder="••••••••"
+                required />
+            </div>
+            <button type="submit" class="btn btn-primary full-width">
+              Authenticate Shell
+            </button>
+          </form>
+        </div>
+      </section>
+
+      <section id="admin-dashboard-section" class="view-panel">
+        <div class="dashboard-wrapper">
+          <div class="dashboard-header-row">
+            <div>
+              <h2>Operations Dashboard Node</h2>
+              <p>
+                Internal tracking logs for overriding and updating logistics
+                matrices.
+              </p>
+            </div>
+            <button class="btn terminate" id="admin-logout-btn">
+              Terminate Shell Session
+            </button>
+          </div>
+
+          <div class="table-scroll-frame">
+            <table class="data-matrix-table" id="dashboard-waybills-table">
+              <thead>
+                <tr>
+                  <th>Waybill Token</th>
+                  <th>Date</th>
+                  <th>Shipper / Recipient</th>
+                  <th>Item(s)</th>
+                  <th>Mass</th>
+                  <th>Current Status</th>
+                  <th>Action Control Hooks</th>
+                </tr>
+              </thead>
+              <tbody id="dashboard-tbody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="system-footer">
+      <p>&copy; 2026 SwiftTrack Waybills Systems Inc. Emmanuel James</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
