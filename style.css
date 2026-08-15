@@ -747,7 +747,7 @@ hr {
     font-size: 12px;
   }
 }
-@media (max-width: 564px ) {
+/* @media (max-width: 564px ) {
   .terminate {
     width: 30%;
     margin-left: 10px;
@@ -849,4 +849,60 @@ hr {
   font-size: 13px;
 }
 
+} */
+
+@media (max-width: 768px) {
+  html,
+  body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  * {
+    box-sizing: border-box;
+  }
+
+  .nav-container {
+    width: 100%;
+    max-width: 1200px;
+    max-width: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .navbar {
+    width: 100%;
+    padding: 15px 20px;
+  }
+  .nav-tab {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-content: center;
+    gap: 10px;
+    font-size: 14px;
+    font-weight: 500;
+  }
+  .hero-banner {
+    width: 100%;
+    max-width: 100%;
+    /* margin: 0 auto; */
+    padding: 40px 25px;
+    /* border-radius: 0 0 20px 20px; */
+  }
+  .hero-banner h1 {
+    font-size: 29px;
+    line-height: 1.2;
+    text-align: center;
+  }
+  .hero-banner p {
+    width: 100%;
+    font-size: 17px;
+    line-height: 1.6;
+  }
+  .hero-banner button a {
+    width: 100%;
+    max-width: 100%;
+  }
 }
