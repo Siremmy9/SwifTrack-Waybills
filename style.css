@@ -804,4 +804,37 @@ hr {
     width: 100%;
     max-width: 100%;
   }
+
+  .section-header h2 {
+    font-size: 1.3rem;
+    width: 100%;
+  }
+  .section-header p {
+    font-size: 0.85rem;
+    margin-top: 0.15rem;
+  }
+
+  .search-form-row {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+    padding: 0 20px;
+    width: 100%;
+    height: 75%;
+    margin-top: 1.2rem;
+  }
+  .audit-btn {
+    padding: 10px;
+    width: 100%;
+    min-width: 100%;
+    display: block;
+  }
+  .terminate {
+    background-color: #ef4444;
+  }
+  .terminate:hover {
+    background-color: #f10f0f;
+    font-size: 15px;
+    font-weight: 700;
+  }
 }
