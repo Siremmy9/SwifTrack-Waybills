@@ -5,6 +5,34 @@
  
  */
 
+const hamburger = document.getElementById("hamburger");
+const navMenu = document.getElementById("nav-menu");
+const navLinks = document.querySelectorAll(".nav-link");
+
+hamburger.addEventListener("click", () => {
+  const isOpen = hamburger.classList.toggle("active");
+
+  navMenu.classList.toggle("active");
+
+  hamburger.setAttribute("aria-expanded", isOpen);
+
+  hamburger.setAttribute(
+    "aria-label",
+    isOpen ? "Close navigation menu" : "Open navigation menu",
+  );
+});
+
+// Close menu when a navigation link is clicked
+navLinks.forEach((link) => {
+  link.addEventListener("click", () => {
+    hamburger.classList.remove("active");
+    navMenu.classList.remove("active");
+
+    hamburger.setAttribute("aria-expanded", "false");
+    hamburger.setAttribute("aria-label", "Open navigation menu");
+  });
+});
+
 document.addEventListener("DOMContentLoaded", () => {
   // Structural Storage Key Initializer Matrix Arrays
   if (!localStorage.getItem("swifttrack_ledger")) {
