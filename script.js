@@ -7,7 +7,7 @@
 
 const hamburger = document.getElementById("hamburger");
 const navMenu = document.getElementById("nav-menu");
-const navLinks = document.querySelectorAll(".nav-link");
+const navTab = document.querySelectorAll(".nav-tab");
 
 hamburger.addEventListener("click", () => {
   const isOpen = hamburger.classList.toggle("active");
@@ -23,13 +23,25 @@ hamburger.addEventListener("click", () => {
 });
 
 // Close menu when a navigation link is clicked
-navLinks.forEach((link) => {
+navTab.forEach((link) => {
   link.addEventListener("click", () => {
+    const targetId = link.dataset.target;
+    const targetSection = document.getElementById(targetId);
+
     hamburger.classList.remove("active");
     navMenu.classList.remove("active");
 
     hamburger.setAttribute("aria-expanded", "false");
     hamburger.setAttribute("aria-label", "Open navigation menu");
+
+    setTimeout(() => {
+      if (targetSection) {
+        targetSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start",
+        });
+      }
+    }, 300);
   });
 });
 
