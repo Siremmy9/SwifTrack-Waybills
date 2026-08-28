@@ -1,7 +1,7 @@
 /**
  
  SWIFTTRACK WAYBILLS CORE APPLICATION JAVASCRIPT LOGIC ENGINE
- create-section
+
  
  */
 
@@ -44,6 +44,23 @@ navTab.forEach((link) => {
     }, 300);
   });
 });
+
+// let savedScrollY = 0;
+// function beforeChange() {
+//   savedScrollY = window.scrollY;
+// }
+// function afterChange() {
+//   window.scrollTo(0, savedScrollY);
+// }
+
+// document.querySelectorAll("nav a").forEach((a) => {
+//   a.addEventListener("click", (e) => {
+//     e.preventDefault();
+//     beforeChange();
+//     loaNewSection(a.dataset.page);
+//     afterChange();
+//   });
+// });
 
 document.addEventListener("DOMContentLoaded", () => {
   // Structural Storage Key Initializer Matrix Arrays

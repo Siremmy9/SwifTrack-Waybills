@@ -65,11 +65,12 @@ body {
 
 /* 
    NAVIGATION FRAME COMPONENT LAYOUT
+   auth-card
    */
 .navbar {
   /* background-color: var(--color-surface-card); */
   border-bottom: 1px solid var(--color-border);
-  position: fixed;
+  position: sticky;
   top: 0;
   left: 0;
   z-index: 1000;
@@ -77,11 +78,10 @@ body {
   background: transparent;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  margin-bottom: 3rem;
+  margin-bottom: -3rem;
 }
 
 .nav-container {
-  width: 100px;
   max-width: 1400px;
   margin: 0 auto;
   padding: 15px 30px;
@@ -98,6 +98,7 @@ body {
   text-decoration: none;
   letter-spacing: -0.5px;
   flex-shrink: 0;
+  padding: 5px;
 }
 
 .logo-accent {
@@ -133,8 +134,8 @@ body {
 }
 
 .nav-tab:hover {
-  color: var(--color-primary);
-  background-color: var(--color-neutral-bg);
+  color: var(--color-surface-card);
+  background-color: var(--color-accent);
 }
 
 .nav-tab.active {
@@ -208,6 +209,7 @@ body {
 
 /* 
    COMMON COMPONENT INTERFACES: BUTTONS & INPUT GROUPS
+toast-box
     */
 .btn {
   padding: 0.75rem 1.5rem;
@@ -624,6 +626,7 @@ hr {
   max-width: 450px;
   margin: 4rem auto;
   box-shadow: var(--shadow-premium);
+  margin-top: -1rem;
 }
 
 .dashboard-wrapper {
@@ -863,7 +866,7 @@ hr {
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 769px) {
   html,
   body {
     width: 100%;
